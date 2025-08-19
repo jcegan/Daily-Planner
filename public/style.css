@@ -1,0 +1,68 @@
+body {
+  font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
+  text-align: center;
+}
+body #navbar {
+  height: 80px;
+  color: #dfdfe2;
+  display: flex;
+  justify-content: space-around;
+  background-color: #373776;
+  align-items: center;
+  border-bottom: 3px solid #dfdfe2;
+}
+body #btn-bar {
+  width: 1400px;
+  min-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto 5px auto;
+}
+body #btn-bar #time-btn-bar {
+  display: inline-block;
+}
+body #btn-bar #left-right-btn-bar {
+  display: inline-block;
+}
+body .container {
+  max-width: 2000px;
+  width: 1400px;
+  min-width: 600px;
+  height: 500px;
+  min-height: 400px;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-rows: auto auto 1fr;
+  background-color: #373776;
+  gap: 5px;
+  padding: 5px;
+  margin: 0 auto;
+  border-radius: 7px;
+}
+body .container .date {
+  background-color: #dfdfe2;
+  border-radius: 2px;
+}
+body .container .date .day {
+  margin: 5px auto;
+}
+body .container .days {
+  background-color: #dfdfe2;
+  border-radius: 2px;
+}
+body .container .days .day {
+  margin: 5px auto;
+}
+body .container .tasks {
+  position: relative;
+  background-color: #dfdfe2;
+  border-radius: 2px;
+  padding-top: 10px;
+}
+body .container .tasks .add-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+/*# sourceMappingURL=style.css.map */

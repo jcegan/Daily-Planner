@@ -1,0 +1,69 @@
+$primary: #373776;
+$secondary: #dfdfe2;
+
+body {
+    font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
+    text-align: center;
+    #navbar {
+        height: 80px;
+        color: $secondary;
+        display: flex;
+        justify-content: space-around;
+        background-color: $primary;
+        align-items: center;
+        border-bottom: 3px solid $secondary;
+    }
+    #btn-bar {
+        width: 1400px;
+        min-width: 600px;
+        display: flex;
+        justify-content: space-between;
+        margin: 20px auto 5px auto;
+        #time-btn-bar {
+            display: inline-block;
+        }
+        #left-right-btn-bar {
+            display: inline-block;
+        }
+    }
+    .container { 
+        max-width: 2000px;
+        width: 1400px;
+        min-width: 600px;
+        height: 500px;
+        min-height: 400px;
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        grid-template-rows: auto auto 1fr;
+        background-color: $primary;
+        gap: 5px;
+        padding: 5px;
+        margin: 0 auto;
+        border-radius: 7px;
+        .date {
+            background-color: $secondary;
+            border-radius: 2px;
+            .day {
+                margin: 5px auto;
+            }
+        }
+        .days {
+            background-color: $secondary;
+            border-radius: 2px;
+            .day {
+                margin: 5px auto;
+            }
+        }
+        .tasks {
+            position: relative;
+            background-color: $secondary;
+            border-radius: 2px;
+            padding-top: 10px;
+            .add-btn {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "daily-planner",
+  "version": "1.0.0",
+  "description": "A daily planner used for scheduling, taking notes and reminders",
+  "author": "jcegan",
+  "main": "index.js",
+  "scripts": {
+    "start": "sh ./run.sh"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.7",
+    "express": "^5.1.0"
+  }
+}

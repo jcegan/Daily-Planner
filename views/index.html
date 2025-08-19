@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Daily Planner</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link href="/public/style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <header>
+            <nav id="navbar">
+                <h1>Daily Planner</h1>
+                <h2>July 2025</h2>
+            </nav>
+        </header>
+        <div id="btn-bar">
+            <div id="time-btn-bar">
+                <button id="year-btn" class="nav-btn btn btn-info">Year</button>
+                <button id="month-btn" class="nav-btn btn btn-info">Month</button>
+                <button id="week-btn" class="nav-btn btn btn-info">Week</button>
+            </div>
+            <div id="left-right-btn-bar">
+                <button id="previous-btn" class="nav-btn btn btn-primary"><i class="fas fa-angle-left"></i></button>
+                <button id="next-btn" class="nav-btn btn btn-primary"><i class="fas fa-angle-right"></i></button>
+            </div>
+        </div>
+        <div id="weekly" class="container">
+            <div class="date"><h2 class="day">21/7/25</h2></div>
+            <div class="date"><h2 class="day">22/7/25</h2></div>
+            <div class="date"><h2 class="day">23/7/25</h2></div>
+            <div class="date"><h2 class="day">24/7/25</h2></div>
+            <div class="date"><h2 class="day">25/7/25</h2></div>
+            <div class="date"><h2 class="day">26/7/25</h2></div>
+            <div class="date"><h2 class="day">27/7/25</h2></div>
+            <div id="mon" class="days"><h2 class="day">Monday</h2></div>
+            <div id="tue" class="days"><h2 class="day">Tuesday</h2></div>
+            <div id="wed" class="days"><h2 class="day">Wednesday</h2></div>
+            <div id="thu" class="days"><h2 class="day">Thursday</h2></div>
+            <div id="fri" class="days"><h2 class="day">Friday</h2></div>
+            <div id="sat" class="days"><h2 class="day">Saturday</h2></div>
+            <div id="su" class="days"><h2 class="day">Sunday</h2></div>
+            <div class="tasks">
+                <button id="add-mon-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="tasks">
+                <button id="add-tue-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="tasks">
+                <button id="add-wed-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="tasks">
+                <button id="add-thu-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="tasks">
+                <button id="add-fri-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="tasks">
+                <button id="add-sat-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="tasks">
+                <button id="add-sun-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+    </body>
+    <script src="/public/app.js"></script>
+</html>
