@@ -6,6 +6,9 @@ body {
     text-align: center;
     #navbar {
         height: 80px;
+        max-width: 2000px;
+        width: 1400px;
+        min-width: 600px;
         color: $secondary;
         display: flex;
         justify-content: space-around;
@@ -43,14 +46,14 @@ body {
         .date {
             background-color: $secondary;
             border-radius: 2px;
-            .day {
+            .date-day {
                 margin: 5px auto;
             }
         }
         .days {
             background-color: $secondary;
             border-radius: 2px;
-            .day {
+            .week-day {
                 margin: 5px auto;
             }
         }

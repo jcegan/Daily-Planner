@@ -4,6 +4,9 @@ body {
 }
 body #navbar {
   height: 80px;
+  max-width: 2000px;
+  width: 1400px;
+  min-width: 600px;
   color: #dfdfe2;
   display: flex;
   justify-content: space-around;
@@ -43,14 +46,14 @@ body .container .date {
   background-color: #dfdfe2;
   border-radius: 2px;
 }
-body .container .date .day {
+body .container .date .date-day {
   margin: 5px auto;
 }
 body .container .days {
   background-color: #dfdfe2;
   border-radius: 2px;
 }
-body .container .days .day {
+body .container .days .week-day {
   margin: 5px auto;
 }
 body .container .tasks {
