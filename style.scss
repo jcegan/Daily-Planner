@@ -6,9 +6,8 @@ body {
     text-align: center;
     #navbar {
         height: 80px;
-        max-width: 2000px;
-        width: 1400px;
-        min-width: 600px;
+        width: 100%;
+        min-width: 1400px;
         color: $secondary;
         display: flex;
         justify-content: space-around;
@@ -18,7 +17,6 @@ body {
     }
     #btn-bar {
         width: 1400px;
-        min-width: 600px;
         display: flex;
         justify-content: space-between;
         margin: 20px auto 5px auto;
@@ -29,44 +27,88 @@ body {
             display: inline-block;
         }
     }
-    .container { 
-        max-width: 2000px;
+    #weekly {
         width: 1400px;
-        min-width: 600px;
         height: 500px;
         min-height: 400px;
-        display: grid;
-        grid-template-columns: repeat(7, minmax(0, 1fr));
-        grid-template-rows: auto auto 1fr;
-        background-color: $primary;
-        gap: 5px;
-        padding: 5px;
+        display: flex;
+        flex-wrap: nowrap;
         margin: 0 auto;
+        background-color: $primary;
+        border-right: solid 7px $primary;
         border-radius: 7px;
-        .date {
-            background-color: $secondary;
-            border-radius: 2px;
-            .date-day {
-                margin: 5px auto;
-            }
-        }
-        .days {
-            background-color: $secondary;
-            border-radius: 2px;
-            .week-day {
-                margin: 5px auto;
-            }
-        }
-        .tasks {
+        .week-days {
             position: relative;
-            background-color: $secondary;
-            border-radius: 2px;
-            padding-top: 10px;
+            flex-basis: 100%;
+            height: 100%;   
+            border-top: solid 7px $primary;
+            border-left: solid 7px $primary;
+            border-radius: 7px;
+            .date {
+                background-color: $secondary;
+                border-radius: 2px;
+            }
+            .days {
+                background-color: $secondary;
+                border-radius: 2px;
+            }
+            .tasks {
+                position: relative;
+                height: 80%;
+                background-color: $secondary;
+                border-radius: 2px;
+                overflow: auto;
+                .task {
+                    text-align: left;
+                    margin: 0 5px;
+                    height: fit-content;
+                    border-bottom: solid 2px $primary;
+                    p {
+                        margin: 0;
+                    }
+                }
+            }
             .add-btn {
                 position: absolute;
                 bottom: 0;
                 right: 0;
+                margin-bottom: 6px;
             }
         }
+    }
+    #task-form {
+        position: absolute;
+        width: 350px; 
+        height: 160px;
+        background-color: white;
+        border: solid 3px $primary;
+        top: 300px;
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        border-radius: 10px;
+        #task-form-date {
+            text-align: left;
+            margin-left: 5px;
+        }
+        #task-form-cancel {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        label {
+            display: inline-block;
+        }
+        input {
+            display: inline-block;
+            background-color: $secondary;
+        }
+        #task-form-submit {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+    .hidden {
+        display: none;
     }
 }

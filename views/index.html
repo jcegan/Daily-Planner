@@ -24,43 +24,59 @@
                 <button id="next-btn" class="nav-btn btn btn-primary"><i class="fas fa-angle-right"></i></button>
             </div>
         </div>
-        <div id="weekly" class="container">
-            <div class="date"><h2 id='mon-date' class="date-day">21/7/25</h2></div>
-            <div class="date"><h2 id='tue-date' class="date-day">22/7/25</h2></div>
-            <div class="date"><h2 id='wed-date' class="date-day">23/7/25</h2></div>
-            <div class="date"><h2 id='thu-date' class="date-day">24/7/25</h2></div>
-            <div class="date"><h2 id='fri-date' class="date-day">25/7/25</h2></div>
-            <div class="date"><h2 id='sat-date' class="date-day">26/7/25</h2></div>
-            <div class="date"><h2 id='sun-date' class="date-day">27/7/25</h2></div>
-            <div class="days"><h2 class="week-day">Monday</h2></div>
-            <div class="days"><h2 class="week-day">Tuesday</h2></div>
-            <div class="days"><h2 class="week-day">Wednesday</h2></div>
-            <div class="days"><h2 class="week-day">Thursday</h2></div>
-            <div class="days"><h2 class="week-day">Friday</h2></div>
-            <div class="days"><h2 class="week-day">Saturday</h2></div>
-            <div class="days"><h2 class="week-day">Sunday</h2></div>
-            <div class="tasks">
+        <div id="weekly">
+            <div id="monday" class="week-days">
+                <div class="date"><h2 id='mon-date' class="date-day">21/7/25</h2></div>
+                <div class="days"><h2>Monday</h2></div>
+                <div class="tasks"></div>
                 <button id="add-mon-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
             </div>
-            <div class="tasks">
+            <div id="tuesday" class="week-days">
+                <div class="date"><h2 id='tue-date' class="date-day">22/7/25</h2></div>
+                <div class="days"><h2>Tuesday</h2></div>
+                <div class="tasks"></div>
                 <button id="add-tue-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
             </div>
-            <div class="tasks">
+            <div id="wednesday" class="week-days">
+                <div class="date"><h2 id='wed-date' class="date-day">23/7/25</h2></div>
+                <div class="days"><h2>Wednesday</h2></div>
+                <div class="tasks"></div>
                 <button id="add-wed-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
             </div>
-            <div class="tasks">
+            <div id="thursday" class="week-days">
+                <div class="date"><h2 id='thu-date' class="date-day">24/7/25</h2></div>
+                <div class="days"><h2>Thursday</h2></div>
+                <div class="tasks"></div>
                 <button id="add-thu-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
             </div>
-            <div class="tasks">
+            <div id="friday" class="week-days">
+                <div class="date"><h2 id='fri-date' class="date-day">25/7/25</h2></div>
+                <div class="days"><h2>Friday</h2></div>
+                <div class="tasks"></div>
                 <button id="add-fri-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
             </div>
-            <div class="tasks">
+            <div id="saturday" class="week-days">
+                <div class="date"><h2 id='sat-date' class="date-day">26/7/25</h2></div>
+                <div class="days"><h2>Saturday</h2></div>
+                <div class="tasks"></div>
                 <button id="add-sat-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
             </div>
-            <div class="tasks">
+            <div id="sunday" class="week-days">
+                <div class="date"><h2 id='sun-date' class="date-day">27/7/25</h2></div>
+                <div class="days"><h2>Sunday</h2></div>
+                <div class="tasks"></div>
                 <button id="add-sun-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
             </div>
         </div>
+        <form id="task-form" class="hidden">
+            <h3 id="task-form-date"></h3>
+            <button id="task-form-cancel" class="btn btn-danger" type="button"><i class="fas fa-times"></i></button>
+            <label for="task-name-input">Task:</label>
+            <input id='task-name-input' required type="text">
+            <label for="task-time-input">Time: (optional)</label>
+            <input id="task-time-input" type="time">
+            <button id="task-form-submit" class="btn btn-primary" type="submit">Add</button>
+        </form>
     </body>
     <script src="/public/app.js"></script>
 </html>
