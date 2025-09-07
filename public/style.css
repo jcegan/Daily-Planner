@@ -55,18 +55,30 @@ body #weekly .week-days .days {
 body #weekly .week-days .tasks {
   position: relative;
   height: 80%;
+  padding-bottom: 40px;
   background-color: #dfdfe2;
   border-radius: 2px;
   overflow: auto;
 }
 body #weekly .week-days .tasks .task {
   text-align: left;
-  margin: 0 5px;
+  margin: 0;
   height: fit-content;
   border-bottom: solid 2px #373776;
 }
 body #weekly .week-days .tasks .task p {
-  margin: 0;
+  display: inline-block;
+  height: 15px;
+  margin-left: 5px;
+}
+body #weekly .week-days .tasks .task .edit-task-btn {
+  display: inline-block;
+  width: 30px;
+  float: right;
+}
+body #weekly .week-days .tasks .task .delete-task-btn {
+  display: inline-block;
+  float: right;
 }
 body #weekly .week-days .add-btn {
   position: absolute;

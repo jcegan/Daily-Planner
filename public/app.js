@@ -10,8 +10,8 @@ const taskNameInput = document.getElementById('task-name-input');
 const taskTimeInput = document.getElementById('task-time-input');
 const taskFormSubmit = document.getElementById('task-form-submit');
 
-const taskData = JSON.parse(localStorage.getItem("data")) || [];
-console.log(taskData)
+let taskData = JSON.parse(localStorage.getItem("data")) || [];
+
 const clearForm = () => {
     taskNameInput.value = '';
     taskTimeInput.value = '';
@@ -22,17 +22,66 @@ const showTaskForm = () => {
 }
 
 const loadTasks = () => {
+    taskData = JSON.parse(localStorage.getItem("data")) || [];
     weekDays.forEach((day) => {
+        let tasksOfDay = [];
         day.parentElement.parentElement.children[2].innerHTML = '';
         taskData.forEach((task) => {
             if (day.innerText === task.date) {
-                day.parentElement.parentElement.children[2].innerHTML += `<div class="task">
-                    <p>${task.title}</p>
-                    <p>${task.time}</p>
-                </div>`;
+                tasksOfDay.push(task);
             } 
         })
+        let sortedDayTasks = tasksOfDay.sort((a, b) => {
+            const [aHours, aMinutes] = a.time.split(':').map(Number);
+            const [bHours, bMinutes] = b.time.split(':').map(Number);
+            return (aHours ? aHours : 23 * 60 + aMinutes ? aMinutes : 59) - (bHours ? bHours : 23 * 60 + bMinutes ? bMinutes : 59);
+        });
+        sortedDayTasks.forEach((task) => {
+            day.parentElement.parentElement.children[2].innerHTML += `<div class="task">
+                <p>${task.title}</p>
+                <button class='btn btn-info btn-sm edit-task-btn' onclick='editTaskHandler(event)'><i class="fas fa-edit"></i></button>
+                <br />
+                <p>${task.time ? '-' + task.time + '-' : '-Any time-'}</p>
+                <button class='btn btn-danger btn-sm delete-task-btn' onclick='deleteTask(event)'><i class="fas fa-trash"></i></button>
+            </div>`;
+        })
     })
+}
+
+const deleteTask = (e) => {
+    let filteredTaskData = taskData.filter((task) => {
+        return task.date !== e.currentTarget.parentElement.parentElement.parentElement.children[0].innerText || task.title !== e.currentTarget.parentElement.children[0].innerText || '-' + task.time + '-' !== (e.currentTarget.parentElement.children[3].innerText === '-Any time-' ? '--' : e.currentTarget.parentElement.children[3].innerText);
+    })
+    localStorage.setItem('data', JSON.stringify(filteredTaskData));
+    loadTasks();
+}
+
+let taskEditing = {};
+
+const editTaskHandler = (e) => {
+    if (taskForm.classList.contains('hidden')){
+        clearForm();
+        taskFormDate.innerText = e.currentTarget.parentElement.parentElement.parentElement.children[1].innerText + ' ' + e.currentTarget.parentElement.parentElement.parentElement.children[0].innerText;
+        taskNameInput.value = e.currentTarget.parentElement.children[0].innerText;
+        taskTimeInput.value = e.currentTarget.parentElement.children[3].innerText === '-Any time-' ? '' : e.currentTarget.parentElement.children[3].innerText.match(/\d+:\d+/);
+        taskEditing.date = e.currentTarget.parentElement.parentElement.parentElement.children[0].innerText;
+        taskEditing.title = e.currentTarget.parentElement.children[0].innerText;
+        taskEditing.time = e.currentTarget.parentElement.children[3].innerText === '-Any time-' ? '' : e.currentTarget.parentElement.children[3].innerText.match(/\d+:\d+/);
+        taskFormSubmit.innerText = 'Update';
+        showTaskForm();
+    }
+}
+
+const editTask = (date) => {
+    let currTask = {
+        date: String(date.match(/\d+\/\d+\/\d+/)),
+        title: taskNameInput.value,
+        time: taskTimeInput.value
+    }
+    taskData.splice(taskData.findIndex((el) => el.date === taskEditing.date && el.title === taskEditing.title && el.time == (taskEditing.time ? taskEditing.time : '')), 1, currTask);
+    localStorage.setItem('data', JSON.stringify(taskData))
+    clearForm();
+    loadTasks();
 }
 
 const addTask = (date) => {
@@ -57,15 +106,23 @@ addTaskBtns.forEach((btn) => {
 });
 
 taskFormCancel.addEventListener('click', (e) => {
-    console.log('cancel')
     e.preventDefault();
+    if(taskFormSubmit.innerText === 'Update'){
+        taskFormSubmit.innerText = 'Add';
+    }
     clearForm();
+    taskEditing = {};
     showTaskForm();
 });
 
 taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    addTask(e.currentTarget.children[0].innerText);
+    if(taskFormSubmit.innerText === 'Update'){
+        editTask(e.currentTarget.children[0].innerText);
+        taskFormSubmit.innerText = 'Add';
+    } else {
+        addTask(e.currentTarget.children[0].innerText);
+    }
     showTaskForm();
 })
 

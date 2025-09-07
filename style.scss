@@ -55,16 +55,28 @@ body {
             .tasks {
                 position: relative;
                 height: 80%;
+                padding-bottom: 40px;
                 background-color: $secondary;
                 border-radius: 2px;
                 overflow: auto;
                 .task {
                     text-align: left;
-                    margin: 0 5px;
+                    margin: 0;
                     height: fit-content;
                     border-bottom: solid 2px $primary;
                     p {
-                        margin: 0;
+                        display: inline-block;
+                        height: 15px;
+                        margin-left: 5px;
+                    }
+                    .edit-task-btn {
+                        display: inline-block;
+                        width: 30px;
+                        float: right;
+                    }
+                    .delete-task-btn {
+                        display:inline-block;
+                        float: right;
                     }
                 }
             }
