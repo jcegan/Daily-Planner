@@ -65,20 +65,21 @@ body #weekly .week-days .tasks .task {
   margin: 0;
   height: fit-content;
   border-bottom: solid 2px #373776;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
 }
-body #weekly .week-days .tasks .task p {
-  display: inline-block;
-  height: 15px;
-  margin-left: 5px;
+body #weekly .week-days .tasks .task .task-title {
+  flex-basis: 100%;
+  margin: 0 0 0 5px;
+}
+body #weekly .week-days .tasks .task .task-time {
+  margin: 0 0 0 5px;
 }
 body #weekly .week-days .tasks .task .edit-task-btn {
-  display: inline-block;
   width: 30px;
-  float: right;
-}
-body #weekly .week-days .tasks .task .delete-task-btn {
-  display: inline-block;
-  float: right;
+  margin-left: auto;
 }
 body #weekly .week-days .add-btn {
   position: absolute;

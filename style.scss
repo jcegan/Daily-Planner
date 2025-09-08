@@ -64,19 +64,22 @@ body {
                     margin: 0;
                     height: fit-content;
                     border-bottom: solid 2px $primary;
-                    p {
-                        display: inline-block;
-                        height: 15px;
-                        margin-left: 5px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                    align-items: center;
+                    .task-title {
+                        flex-basis: 100%;
+                        margin: 0 0 0 5px;
+                    }
+                    .task-time {
+                        margin: 0 0 0 5px;
                     }
                     .edit-task-btn {
-                        display: inline-block;
                         width: 30px;
-                        float: right;
+                        margin-left: auto;
                     }
                     .delete-task-btn {
-                        display:inline-block;
-                        float: right;
                     }
                 }
             }

@@ -38,10 +38,9 @@ const loadTasks = () => {
         });
         sortedDayTasks.forEach((task) => {
             day.parentElement.parentElement.children[2].innerHTML += `<div class="task">
-                <p>${task.title}</p>
+                <p class='task-title'>${task.title}</p>
+                <p class='task-time'>${task.time ? '-' + task.time + '-' : '-Any time-'}</p>
                 <button class='btn btn-info btn-sm edit-task-btn' onclick='editTaskHandler(event)'><i class="fas fa-edit"></i></button>
-                <br />
-                <p>${task.time ? '-' + task.time + '-' : '-Any time-'}</p>
                 <button class='btn btn-danger btn-sm delete-task-btn' onclick='deleteTask(event)'><i class="fas fa-trash"></i></button>
             </div>`;
         })
@@ -50,7 +49,7 @@ const loadTasks = () => {
 
 const deleteTask = (e) => {
     let filteredTaskData = taskData.filter((task) => {
-        return task.date !== e.currentTarget.parentElement.parentElement.parentElement.children[0].innerText || task.title !== e.currentTarget.parentElement.children[0].innerText || '-' + task.time + '-' !== (e.currentTarget.parentElement.children[3].innerText === '-Any time-' ? '--' : e.currentTarget.parentElement.children[3].innerText);
+        return task.date !== e.currentTarget.parentElement.parentElement.parentElement.children[0].innerText || task.title !== e.currentTarget.parentElement.children[0].innerText || '-' + task.time + '-' !== (e.currentTarget.parentElement.children[1].innerText === '-Any time-' ? '--' : e.currentTarget.parentElement.children[2].innerText);
     })
     localStorage.setItem('data', JSON.stringify(filteredTaskData));
     loadTasks();
@@ -63,10 +62,10 @@ const editTaskHandler = (e) => {
         clearForm();
         taskFormDate.innerText = e.currentTarget.parentElement.parentElement.parentElement.children[1].innerText + ' ' + e.currentTarget.parentElement.parentElement.parentElement.children[0].innerText;
         taskNameInput.value = e.currentTarget.parentElement.children[0].innerText;
-        taskTimeInput.value = e.currentTarget.parentElement.children[3].innerText === '-Any time-' ? '' : e.currentTarget.parentElement.children[3].innerText.match(/\d+:\d+/);
+        taskTimeInput.value = e.currentTarget.parentElement.children[1].innerText === '-Any time-' ? '' : e.currentTarget.parentElement.children[1].innerText.match(/\d+:\d+/);
         taskEditing.date = e.currentTarget.parentElement.parentElement.parentElement.children[0].innerText;
         taskEditing.title = e.currentTarget.parentElement.children[0].innerText;
-        taskEditing.time = e.currentTarget.parentElement.children[3].innerText === '-Any time-' ? '' : e.currentTarget.parentElement.children[3].innerText.match(/\d+:\d+/);
+        taskEditing.time = e.currentTarget.parentElement.children[1].innerText === '-Any time-' ? '' : e.currentTarget.parentElement.children[1].innerText.match(/\d+:\d+/);
         taskFormSubmit.innerText = 'Update';
         showTaskForm();
     }
