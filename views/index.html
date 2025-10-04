@@ -10,64 +10,276 @@
         <header>
             <nav id="navbar">
                 <h1>Daily Planner</h1>
-                <h2>July 2025</h2>
+                <h1 id="year-month-title"></h1>
             </nav>
         </header>
         <div id="btn-bar">
             <div id="time-btn-bar">
                 <button id="year-btn" class="nav-btn btn btn-info">Year</button>
                 <button id="month-btn" class="nav-btn btn btn-info">Month</button>
-                <button id="week-btn" class="nav-btn btn btn-info">Week</button>
+                <button id="week-btn" class="nav-btn btn btn-info" disabled>Week</button>
             </div>
             <div id="left-right-btn-bar">
                 <button id="previous-btn" class="nav-btn btn btn-primary"><i class="fas fa-angle-left"></i></button>
                 <button id="next-btn" class="nav-btn btn btn-primary"><i class="fas fa-angle-right"></i></button>
             </div>
         </div>
+        <div id="calendars">
         <div id="weekly">
-            <div id="monday" class="week-days">
-                <div class="date"><h2 id='mon-date' class="date-day">21/7/25</h2></div>
-                <div class="days"><h2>Monday</h2></div>
-                <div class="tasks"></div>
-                <button id="add-mon-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            <div class="week-days">
+                <div class="date-title-box">
+                    <h2 class="day-of-week-title">Mon</h2>
+                    <h2 class="date-month-title">22 Sep</h2>
+                </div>
+                <div class="tasks-box"></div>
+                <button class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
             </div>
-            <div id="tuesday" class="week-days">
-                <div class="date"><h2 id='tue-date' class="date-day">22/7/25</h2></div>
-                <div class="days"><h2>Tuesday</h2></div>
-                <div class="tasks"></div>
-                <button id="add-tue-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            <div class="week-days">
+                <div class="date-title-box">
+                    <h2 class="day-of-week-title">Tue</h2>
+                    <h2 class="date-month-title">23 Sep</h2>
+                </div>
+                <div class="tasks-box"></div>
+                <button class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
             </div>
-            <div id="wednesday" class="week-days">
-                <div class="date"><h2 id='wed-date' class="date-day">23/7/25</h2></div>
-                <div class="days"><h2>Wednesday</h2></div>
-                <div class="tasks"></div>
-                <button id="add-wed-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            <div class="week-days">
+                <div class="date-title-box">
+                    <h2 class="day-of-week-title">Wed</h2>
+                    <h2 class="date-month-title">24 Sep</h2>
+                </div>
+                <div class="tasks-box"></div>
+                <button class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
             </div>
-            <div id="thursday" class="week-days">
-                <div class="date"><h2 id='thu-date' class="date-day">24/7/25</h2></div>
-                <div class="days"><h2>Thursday</h2></div>
-                <div class="tasks"></div>
-                <button id="add-thu-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            <div class="week-days">
+                <div class="date-title-box">
+                    <h2 class="day-of-week-title">Thu</h2>
+                    <h2 class="date-month-title">25 Sep</h2>
+                </div>
+                <div class="tasks-box"></div>
+                <button class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
             </div>
-            <div id="friday" class="week-days">
-                <div class="date"><h2 id='fri-date' class="date-day">25/7/25</h2></div>
-                <div class="days"><h2>Friday</h2></div>
-                <div class="tasks"></div>
-                <button id="add-fri-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            <div class="week-days">
+                <div class="date-title-box">
+                    <h2 class="day-of-week-title">Fri</h2>
+                    <h2 class="date-month-title">26 Sep</h2>
+                </div>
+                <div class="tasks-box"></div>
+                <button class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
             </div>
-            <div id="saturday" class="week-days">
-                <div class="date"><h2 id='sat-date' class="date-day">26/7/25</h2></div>
-                <div class="days"><h2>Saturday</h2></div>
-                <div class="tasks"></div>
-                <button id="add-sat-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            <div class="week-days">
+                <div class="date-title-box">
+                    <h2 class="day-of-week-title">Sat</h2>
+                    <h2 class="date-month-title">27 Sep</h2>
+                </div>
+                <div class="tasks-box"></div>
+                <button class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
             </div>
-            <div id="sunday" class="week-days">
-                <div class="date"><h2 id='sun-date' class="date-day">27/7/25</h2></div>
-                <div class="days"><h2>Sunday</h2></div>
-                <div class="tasks"></div>
-                <button id="add-sun-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            <div class="week-days">
+                <div class="date-title-box">
+                    <h2 class="day-of-week-title">Sun</h2>
+                    <h2 class="date-month-title">28 Sep</h2>
+                </div>
+                <div class="tasks-box"></div>
+                <button class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
             </div>
         </div>
+        <div id="monthly" class="hidden">
+            <div class="month-day-of-week">
+                <h2 class="month-day">Mon</h2>
+            </div>
+            <div class="month-day-of-week">
+                <h2 class="month-day">Tue</h2>
+            </div>
+            <div class="month-day-of-week">
+                <h2 class="month-day">Wed</h2>
+            </div>
+            <div class="month-day-of-week">
+                <h2 class="month-day">Thu</h2>
+            </div>
+            <div class="month-day-of-week">
+                <h2 class="month-day">Fri</h2>
+            </div>
+            <div class="month-day-of-week">
+                <h2 class="month-day">Sat</h2>
+            </div>
+            <div class="month-day-of-week">
+                <h2 class="month-day">Sun</h2>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">1</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">2</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">3</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">4</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">5</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">6</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">7</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">8</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">9</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">10</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">11</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">12</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">13</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">14</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">15</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">16</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">17</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">18</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">19</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">20</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">21</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">22</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">23</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">24</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">25</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">26</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">27</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">28</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">29</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">30</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">31</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">1</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">2</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">3</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">4</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">5</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">6</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">7</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">8</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">9</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">10</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div class="month-tile">
+                <h2 class="month-date">11</h2>
+                <h3 class="task-amount">0 Items</h3>
+            </div>
+            <div id="month-task-editor" class="hidden">
+                <h2 id="month-task-editor-date-text"></h2>
+                <div id="month-task-editor-tasks-box"></div>
+                <button id="month-task-editor-add-btn" class="add-btn btn btn-primary"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+        </div>          
         <form id="task-form" class="hidden">
             <h3 id="task-form-date"></h3>
             <button id="task-form-cancel" class="btn btn-danger" type="button"><i class="fas fa-times"></i></button>

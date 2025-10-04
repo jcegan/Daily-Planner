@@ -1,9 +1,11 @@
 $primary: #373776;
 $secondary: #dfdfe2;
+$tertiary: #289ae6;
 
 body {
     font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
     text-align: center;
+    overflow: visible;
     #navbar {
         height: 80px;
         width: 100%;
@@ -27,13 +29,17 @@ body {
             display: inline-block;
         }
     }
+    #calendars {
+        display: grid;
+    }
     #weekly {
         width: 1400px;
         height: 500px;
         min-height: 400px;
+        grid-area: 1 / 1; 
+        margin: 0 auto;
         display: flex;
         flex-wrap: nowrap;
-        margin: 0 auto;
         background-color: $primary;
         border-right: solid 7px $primary;
         border-radius: 7px;
@@ -44,20 +50,20 @@ body {
             border-top: solid 7px $primary;
             border-left: solid 7px $primary;
             border-radius: 7px;
-            .date {
+            .date-title-box {
                 background-color: $secondary;
-                border-radius: 2px;
+                border-radius: 5px;
+                h2 {
+                    margin: 0;
+                }
             }
-            .days {
-                background-color: $secondary;
-                border-radius: 2px;
-            }
-            .tasks {
+            .tasks-box {
                 position: relative;
-                height: 80%;
+                height: 404px;
+                margin-top: 7px;
                 padding-bottom: 40px;
                 background-color: $secondary;
-                border-radius: 2px;
+                border-radius: 30px;
                 overflow: auto;
                 .task {
                     text-align: left;
@@ -79,8 +85,6 @@ body {
                         width: 30px;
                         margin-left: auto;
                     }
-                    .delete-task-btn {
-                    }
                 }
             }
             .add-btn {
@@ -89,6 +93,95 @@ body {
                 right: 0;
                 margin-bottom: 6px;
             }
+        }
+    }
+    #monthly{
+        width: 900px;
+        height: 500px;
+        min-height: 400px;
+        grid-area: 1 / 1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin: 0 auto;
+        background-color: $primary;
+        border-right: solid 7px $primary;
+        border-radius: 7px;
+        padding-top: 7px;
+        padding-left: 7px;
+        padding-bottom: 7px;
+        .month-day-of-week{
+            border-radius: 5px;   
+            border: solid 7px $secondary;
+            width: calc((100% - (6 * 7px)) / 7);
+            background-color: $secondary;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .month-day{
+                margin-top: 8px;
+            }
+        }
+        .month-tile {
+            border-radius: 25px;   
+            border: solid 7px $secondary;
+            width: calc((100% - (6 * 7px)) / 7);
+            height: calc((100% - (47px + (6 * 7px))) / 6);
+            background-color: $secondary;
+            overflow: hidden;
+            caret-color: transparent;
+            cursor: pointer;
+            .task-amount{
+                margin: -10px;
+                font-size: 15px;
+            }
+        }
+        #month-task-editor{
+            position: absolute;
+            left: 20px;
+            top: 142px;
+            width: 200px;
+            height: 500px;
+            background-color: $secondary;
+            border: solid 7px $primary;
+            border-radius: 7px;
+            #month-task-editor-date{
+                border-bottom: solid 7px $primary;
+            }
+            .task {
+                text-align: left;
+                margin: 0;
+                height: fit-content;
+                border-bottom: solid 2px $primary;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                align-items: center;
+                .task-title {
+                    flex-basis: 100%;
+                    margin: 0 0 0 5px;
+                }
+                .task-time {
+                    margin: 0 0 0 5px;
+                }
+                .edit-task-btn {
+                    width: 30px;
+                    margin-left: auto;
+                }
+            }
+            #month-task-editor-add-btn {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+        }
+        .month-tile:hover {
+            filter: brightness(85%);
+        }
+        .locked {
+        border: solid 4px $tertiary;
+        filter: brightness(85%);
         }
     }
     #task-form {
@@ -124,6 +217,13 @@ body {
         }
     }
     .hidden {
-        display: none;
+        visibility: hidden;
+    }
+    .grey {
+        filter: brightness(70%);
+    }
+    .bold {
+        font-weight: bolder;
+        color: $tertiary;
     }
 }

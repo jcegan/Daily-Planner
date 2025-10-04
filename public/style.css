@@ -1,6 +1,7 @@
 body {
   font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
   text-align: center;
+  overflow: visible;
 }
 body #navbar {
   height: 80px;
@@ -25,13 +26,17 @@ body #btn-bar #time-btn-bar {
 body #btn-bar #left-right-btn-bar {
   display: inline-block;
 }
+body #calendars {
+  display: grid;
+}
 body #weekly {
   width: 1400px;
   height: 500px;
   min-height: 400px;
+  grid-area: 1/1;
+  margin: 0 auto;
   display: flex;
   flex-wrap: nowrap;
-  margin: 0 auto;
   background-color: #373776;
   border-right: solid 7px #373776;
   border-radius: 7px;
@@ -44,23 +49,23 @@ body #weekly .week-days {
   border-left: solid 7px #373776;
   border-radius: 7px;
 }
-body #weekly .week-days .date {
+body #weekly .week-days .date-title-box {
   background-color: #dfdfe2;
-  border-radius: 2px;
+  border-radius: 5px;
 }
-body #weekly .week-days .days {
-  background-color: #dfdfe2;
-  border-radius: 2px;
+body #weekly .week-days .date-title-box h2 {
+  margin: 0;
 }
-body #weekly .week-days .tasks {
+body #weekly .week-days .tasks-box {
   position: relative;
-  height: 80%;
+  height: 404px;
+  margin-top: 7px;
   padding-bottom: 40px;
   background-color: #dfdfe2;
-  border-radius: 2px;
+  border-radius: 30px;
   overflow: auto;
 }
-body #weekly .week-days .tasks .task {
+body #weekly .week-days .tasks-box .task {
   text-align: left;
   margin: 0;
   height: fit-content;
@@ -70,14 +75,14 @@ body #weekly .week-days .tasks .task {
   justify-content: flex-start;
   align-items: center;
 }
-body #weekly .week-days .tasks .task .task-title {
+body #weekly .week-days .tasks-box .task .task-title {
   flex-basis: 100%;
   margin: 0 0 0 5px;
 }
-body #weekly .week-days .tasks .task .task-time {
+body #weekly .week-days .tasks-box .task .task-time {
   margin: 0 0 0 5px;
 }
-body #weekly .week-days .tasks .task .edit-task-btn {
+body #weekly .week-days .tasks-box .task .edit-task-btn {
   width: 30px;
   margin-left: auto;
 }
@@ -86,6 +91,95 @@ body #weekly .week-days .add-btn {
   bottom: 0;
   right: 0;
   margin-bottom: 6px;
+}
+body #monthly {
+  width: 900px;
+  height: 500px;
+  min-height: 400px;
+  grid-area: 1/1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0 auto;
+  background-color: #373776;
+  border-right: solid 7px #373776;
+  border-radius: 7px;
+  padding-top: 7px;
+  padding-left: 7px;
+  padding-bottom: 7px;
+}
+body #monthly .month-day-of-week {
+  border-radius: 5px;
+  border: solid 7px #dfdfe2;
+  width: calc((100% - 42px) / 7);
+  background-color: #dfdfe2;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body #monthly .month-day-of-week .month-day {
+  margin-top: 8px;
+}
+body #monthly .month-tile {
+  border-radius: 25px;
+  border: solid 7px #dfdfe2;
+  width: calc((100% - 42px) / 7);
+  height: calc((100% - 89px) / 6);
+  background-color: #dfdfe2;
+  overflow: hidden;
+  caret-color: transparent;
+  cursor: pointer;
+}
+body #monthly .month-tile .task-amount {
+  margin: -10px;
+  font-size: 15px;
+}
+body #monthly #month-task-editor {
+  position: absolute;
+  left: 20px;
+  top: 142px;
+  width: 200px;
+  height: 500px;
+  background-color: #dfdfe2;
+  border: solid 7px #373776;
+  border-radius: 7px;
+}
+body #monthly #month-task-editor #month-task-editor-date {
+  border-bottom: solid 7px #373776;
+}
+body #monthly #month-task-editor .task {
+  text-align: left;
+  margin: 0;
+  height: fit-content;
+  border-bottom: solid 2px #373776;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+body #monthly #month-task-editor .task .task-title {
+  flex-basis: 100%;
+  margin: 0 0 0 5px;
+}
+body #monthly #month-task-editor .task .task-time {
+  margin: 0 0 0 5px;
+}
+body #monthly #month-task-editor .task .edit-task-btn {
+  width: 30px;
+  margin-left: auto;
+}
+body #monthly #month-task-editor #month-task-editor-add-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+body #monthly .month-tile:hover {
+  filter: brightness(85%);
+}
+body #monthly .locked {
+  border: solid 4px #289ae6;
+  filter: brightness(85%);
 }
 body #task-form {
   position: absolute;
@@ -120,7 +214,14 @@ body #task-form #task-form-submit {
   margin: 0 auto;
 }
 body .hidden {
-  display: none;
+  visibility: hidden;
+}
+body .grey {
+  filter: brightness(70%);
+}
+body .bold {
+  font-weight: bolder;
+  color: #289ae6;
 }
 
 /*# sourceMappingURL=style.css.map */
