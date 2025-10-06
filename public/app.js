@@ -1,6 +1,7 @@
 const yearMonthTitle = document.getElementById('year-month-title');
 const weekPg = document.getElementById('weekly');
 const monthPg = document.getElementById('monthly');
+const yearPg = document.getElementById('yearly');
 
 const monthTaskEditor = document.getElementById('month-task-editor');
 const monthTaskEditorDateText = document.getElementById('month-task-editor-date-text');
@@ -12,6 +13,8 @@ const tasksBoxes = [...document.getElementsByClassName('tasks-box')];
 const monthTiles = [...document.getElementsByClassName('month-tile')];
 const monthDays = [...document.getElementsByClassName('month-date')];
 const taskAmounts = [...document.getElementsByClassName('task-amount')];
+const yearTiles = [...document.getElementsByClassName('year-tile')];
+const yearTileGrids = [...document.getElementsByClassName('tile-grid')];
 
 const nextPgBtn = document.getElementById('next-btn');
 const prvPgBtn = document.getElementById('previous-btn');
@@ -258,7 +261,41 @@ const getWeekDayDates = (i, firstOfMonth) => {
             updatedDate.setDate((firstOfMonth.getDate()));
     };
     return updatedDate;
-}
+};
+
+const loadYear = () => {
+    yearMonthTitle.innerText = months[0] + ' ' + yearMonthTitle.innerText.match(/\d+/);
+    yearTileGrids.forEach((tile) => {
+        tile.innerHTML = '';
+    });
+    for (let i = 0; i < yearTileGrids.length; i++){
+        const firstOfMonth = new Date(yearMonthTitle.innerText.match(/\d+/), i, 1);
+        for (let j = 1; j < 8; j++){
+            yearTileGrids[i].innerHTML += `<div id='weekday-tile-${i}-${j}' class='year-box weekday-tile'>${(j === 7 ? daysOfWeek[0] : daysOfWeek[j]).match(/^./)}</div>`;
+        };
+        for (let j = 0; j < 35; j++){
+            const updatedDateObj = getWeekDayDates(j, firstOfMonth);
+            yearTileGrids[i].innerHTML += `<div id='tile-${i}-${j}' class='year-box'>${updatedDateObj.getDate()}</div>`;
+            const currTile = document.getElementById(`tile-${i}-${j}`);
+            const numOfTasks = taskData.filter((task) => task.date.year === updatedDateObj.getFullYear() && task.date.month === updatedDateObj.getMonth() && task.date.date === updatedDateObj.getDate()).length;
+            switch (numOfTasks){
+                case 0:
+                    break;
+                case 1:
+                    currTile.classList.add('box-color-1');
+                    break;
+                case 2:
+                    currTile.classList.add('box-color-2');
+                    break;
+                case 3:
+                    currTile.classList.add('box-color-3');
+                    break;
+                default:
+                    currTile.classList.add('box-color-4');
+            };
+        };
+    };
+};
 
 const loadMonth = () => {
     lockMonthTaskEditor = false;
@@ -279,7 +316,7 @@ const loadMonth = () => {
 
 const loadWeek = () => {
     const firstOfMonth = yearMonthTitle.innerText === '' ? new Date(todaysDate.getFullYear(), todaysDate.getMonth(), 1) : new Date(yearMonthTitle.innerText.match(/\d+/), months.indexOf(String(yearMonthTitle.innerText.match(/[A-Za-z]+/))), 1);
-    yearMonthTitle.innerText = months[firstOfMonth.getMonth()] + firstOfMonth.getFullYear();
+    yearMonthTitle.innerText = months[firstOfMonth.getMonth()] + ' ' + firstOfMonth.getFullYear();
     const currMonth = firstOfMonth.getMonth();
     for (let i = 0; i < weeklyDateTitles.length; i++){
         weeklyDateTitles[i].parentElement.parentElement.classList.remove('grey');
@@ -359,12 +396,40 @@ monthTiles.forEach((tile) => {
     });
 });
 
+yearTiles.forEach((tile) => {
+    tile.addEventListener('click', (e) => {
+        yearMonthTitle.innerText = `${e.currentTarget.children[0].innerText} ${yearMonthTitle.innerText.match(/\d+/)}`;
+        clearTasks();
+        loadMonth();
+        yearPg.classList.toggle('hidden');
+        monthPg.classList.toggle('hidden');
+        yearBtn.disabled = false;
+        weekBtn.disabled = false;
+        monthBtn.disabled = true;
+        lockMonthTaskEditor = false;
+    });
+});
+
+yearBtn.addEventListener('click', () => {
+    clearTasks();
+    loadYear();
+    if(monthPg.classList.contains('hidden')){
+        weekPg.classList.toggle('hidden');
+    } else {
+        monthPg.classList.toggle('hidden');
+    };
+    yearPg.classList.toggle('hidden');
+    yearBtn.disabled = true;
+    monthBtn.disabled = false;
+    weekBtn.disabled = false;
+})
+
 monthBtn.addEventListener('click', () => {
     clearTasks();
     loadMonth();
     monthTaskEditor.classList.add('hidden');
     if (weekPg.classList.contains('hidden')){
-        //hide year
+        yearPg.classList.toggle('hidden');
     } else {
         weekPg.classList.toggle('hidden');
     };
@@ -379,7 +444,7 @@ weekBtn.addEventListener('click', () => {
     clearTasks();
     loadWeek();
     if (monthPg.classList.contains('hidden')){
-        //hide year
+        yearPg.classList.toggle('hidden');
     } else {
         monthPg.classList.toggle('hidden');
     };
@@ -395,8 +460,9 @@ prvPgBtn.addEventListener('click', () => {
     let mondayMonthNumber;
     let mondayYearNumber;
     if(monthPg.classList.contains('hidden') && weekPg.classList.contains('hidden')){
-        //scroll year
-    } else if(/*yearPg.classList.contains('hidden') &&*/ weekPg.classList.contains('hidden')){
+        yearMonthTitle.innerText = `January ${Number(yearMonthTitle.innerText.match(/\d+/)) - 1}`;
+        loadYear();
+    } else if(yearPg.classList.contains('hidden') && weekPg.classList.contains('hidden')){
         const prvMonth = months[mondayDateObj.getMonth() - 1 === -1 ? 11 : mondayDateObj.getMonth() - 1];
         yearMonthTitle.innerText = `${prvMonth} ${(prvMonth === 'December' ? (Number(yearMonthTitle.innerText.match(/\d+/)) - 1) : yearMonthTitle.innerText.match(/\d+/))}`;
         loadMonth();
@@ -423,8 +489,9 @@ nextPgBtn.addEventListener('click', () => {
     let mondayMonthNumber;
     let mondayYearNumber;
     if(monthPg.classList.contains('hidden') && weekPg.classList.contains('hidden')){
-        //scroll year
-    } else if(/*yearPg.classList.contains('hidden') &&*/ weekPg.classList.contains('hidden')){
+        yearMonthTitle.innerText = `January ${Number(yearMonthTitle.innerText.match(/\d+/)) + 1}`;
+        loadYear();
+    } else if(yearPg.classList.contains('hidden') && weekPg.classList.contains('hidden')){
         const nextMonth = months[mondayDateObj.getMonth() + 1 === 12 ? 0 : mondayDateObj.getMonth() + 1];
         yearMonthTitle.innerText = `${nextMonth} ${(nextMonth === 'January' ? (Number(yearMonthTitle.innerText.match(/\d+/)) + 1) : yearMonthTitle.innerText.match(/\d+/))}`;
         loadMonth();

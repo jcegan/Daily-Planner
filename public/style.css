@@ -2,6 +2,7 @@ body {
   font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
   text-align: center;
   overflow: visible;
+  caret-color: transparent;
 }
 body #navbar {
   height: 80px;
@@ -180,6 +181,80 @@ body #monthly .month-tile:hover {
 body #monthly .locked {
   border: solid 4px #289ae6;
   filter: brightness(85%);
+}
+body #yearly {
+  width: 900px;
+  height: 500px;
+  min-height: 400px;
+  margin: 0 auto;
+  grid-area: 1/1;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #373776;
+  border-right: solid 7px #373776;
+  border-radius: 7px;
+}
+body #yearly .year-tile {
+  width: calc(25% - 7px);
+  height: calc(33.3333333333% - 9.5px);
+  margin: 7px 0 0 7px;
+  border-radius: 7px;
+  background-color: #dfdfe2;
+  cursor: pointer;
+}
+body #yearly .tile-title {
+  margin: 0;
+  font-size: 30px;
+}
+body #yearly .tile-grid {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  margin: 0;
+}
+body #yearly .tile-grid .year-box {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 900;
+}
+body #yearly .tile-grid .weekday-tile {
+  border-bottom: solid 2px black;
+}
+body #yearly #legend {
+  width: fit-content;
+  height: 40px;
+  display: flex;
+  position: relative;
+  top: 10px;
+  left: -7px;
+  margin: 7px 0 0 7px;
+  padding: 20px;
+  border: solid 8px #373776;
+  border-radius: 7px;
+  background-color: #dfdfe2;
+  align-items: center;
+}
+body #yearly #legend .legend-text {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 16px;
+}
+body #yearly #legend .legend-box {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin: 3px;
+}
+body #yearly .box-color-1 {
+  background-color: #289ae6;
+}
+body #yearly .box-color-2 {
+  background-color: #ecec36;
+}
+body #yearly .box-color-3 {
+  background-color: #f57d2e;
+}
+body #yearly .box-color-4 {
+  background-color: #f42f2f;
 }
 body #task-form {
   position: absolute;

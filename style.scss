@@ -6,6 +6,7 @@ body {
     font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
     text-align: center;
     overflow: visible;
+    caret-color: transparent;
     #navbar {
         height: 80px;
         width: 100%;
@@ -182,6 +183,80 @@ body {
         .locked {
         border: solid 4px $tertiary;
         filter: brightness(85%);
+        }
+    }
+    #yearly {
+        width: 900px;
+        height: 500px;
+        min-height: 400px; 
+        margin: 0 auto;
+        grid-area: 1 / 1;
+        display: flex;
+        flex-wrap: wrap;
+        background-color: $primary;
+        border-right: solid 7px $primary;
+        border-radius: 7px;
+        .year-tile {
+            width: calc((100% / 4) - 7px);
+            height: calc((100% / 3) - 9.5px);
+            margin: 7px 0 0 7px;
+            border-radius: 7px;
+            background-color: $secondary;
+            cursor: pointer;
+        }
+        .tile-title {
+            margin: 0;
+            font-size: 30px;
+        }
+        .tile-grid {
+            display: grid;
+            grid-template-columns: repeat(7, auto);
+            margin: 0;
+            .year-box {
+                margin: 0;
+                font-size: 13px;
+                font-weight: 900;
+            }
+            .weekday-tile {
+                border-bottom: solid 2px black;
+            }
+        }
+        #legend {
+            width: fit-content;
+            height: 40px;
+            display: flex;
+            position: relative;
+            top: 10px;
+            left: -7px;
+            margin: 7px 0 0 7px;
+            padding: 20px;
+            border: solid 8px $primary;
+            border-radius: 7px;
+            background-color: $secondary;
+            align-items: center;
+            .legend-text {
+                display: inline-block;
+                margin-top: 8px;
+                font-size: 16px;
+            }
+            .legend-box {
+                width: 30px;
+                height: 30px;
+                display: inline-block;
+                margin: 3px;
+            }
+        }
+        .box-color-1 {
+            background-color: $tertiary;
+        }
+        .box-color-2 {
+            background-color: #ecec36;
+        }
+        .box-color-3 {
+            background-color: #f57d2e;
+        }
+        .box-color-4 {
+            background-color: #f42f2f;
         }
     }
     #task-form {
