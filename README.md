@@ -1,11 +1,11 @@
 # Daily-Planner
 I made this daily planner as a project and something I wish to use to help order all the things going on in my daily life.
 ## App features
--Clean and intuitive UI for seamless interaction.
--Switch bewteen year, month and week calendars
--Set titles and times of tasks and display on calendars
--Save task data using javaScript localStorage
--Clean and maintainable code
+-Clean and intuitive UI for seamless interaction<br>
+-Switch bewteen year, month and week calendars<br>
+-Set titles and times of tasks and display on calendars<br>
+-Save task data using javaScript localStorage<br>
+-Clean and maintainable code<br>
 ## How it's made:
 **Programming languages:** HTML, CSS, SCSS, JS, nodeJS
 As this is my first self made full stack project, I include everthing from front-end to back-end. I use JavaScript for the logic and interactivity of the different modules, I also use nodeJS to provide a localhost server to run client-side.
